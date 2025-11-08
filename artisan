@@ -1,0 +1,52 @@
+#!/usr/bin/env php
+<?php
+
+use Illuminate\Foundation\Application;
+use Symfony\Component\Console\Input\ArgvInput;
+
+define('LARAVEL_START', microtime(true));
+
+// Pre-sanitize env to suppress workers warning for `php artisan serve`
+$__argv = $_SERVER['argv'] ?? ($GLOBALS['argv'] ?? []);
+if (isset($__argv[1]) && $__argv[1] === 'serve' && !in_array('--no-reload', $__argv, true)) {
+    $var = 'PHP_CLI_SERVER_WORKERS';
+    // Ensure the variable is not visible to Laravel/ServeCommand
+    putenv($var);
+    unset($_ENV[$var], $_SERVER[$var]);
+}
+
+// Register the Composer autoloader...
+require __DIR__.'/vendor/autoload.php';
+
+// Bootstrap Laravel and handle the command...
+/** @var Application $app */
+$app = require_once __DIR__.'/bootstrap/app.php';
+
+// Optional: run `php artisan serve` quietly on Windows if enabled via ENV
+// Set SERVE_QUIET_DEFAULT=true in your .env to suppress serve output.
+if (PHP_OS_FAMILY === 'Windows' && env('SERVE_QUIET_DEFAULT', false)) {
+    $argv = $_SERVER['argv'] ?? [];
+    $isServe = isset($argv[1]) && $argv[1] === 'serve';
+    $hasQuiet = in_array('-q', $argv, true) || in_array('--quiet', $argv, true);
+    if ($isServe && !$hasQuiet) {
+        $argv[] = '--quiet';
+        $_SERVER['argv'] = $argv;
+    }
+}
+
+// Suppress workers warning without changing behavior: keep auto-reload, ignore workers
+// If `PHP_CLI_SERVER_WORKERS` is set but `--no-reload` isn't, unset the env to avoid WARN.
+$argv = $_SERVER['argv'] ?? ($GLOBALS['argv'] ?? []);
+$isServe = isset($argv[1]) && $argv[1] === 'serve';
+$noReload = in_array('--no-reload', $argv, true);
+if ($isServe && !$noReload) {
+    $var = 'PHP_CLI_SERVER_WORKERS';
+    // Remove from different env bags so ServeCommand won't see it
+    // Unset from process env completely
+    putenv($var);
+    unset($_ENV[$var], $_SERVER[$var]);
+}
+
+$status = $app->handleCommand(new ArgvInput);
+
+exit($status);

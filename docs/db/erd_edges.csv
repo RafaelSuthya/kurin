@@ -1,0 +1,13 @@
+source,target,label
+users,orders,"1..N via orders.user_id"
+orders,order_statuses,"N..1 via orders.status_id"
+orders,order_items,"1..N via order_items.order_id (cascade)"
+orders,cancellations,"0..N via cancellations.order_id"
+orders,return_orders,"0..N via return_orders.order_id"
+orders,transactions,"0..1 via transactions.order_id (string unique)"
+products,categories,"N..1 (conceptual) via products.category_id"
+order_items,products,"0..1 via order_items.product_id (optional)"
+personal_access_tokens,users,"N..1 polymorphic"
+personal_access_tokens,admins,"N..1 polymorphic"
+sessions,users,"0..1 conceptual"
+password_reset_tokens,users,"0..1 conceptual"

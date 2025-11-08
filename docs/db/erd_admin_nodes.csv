@@ -1,0 +1,13 @@
+id,label,attributes,pk,unique,notes
+admins,Admins,"id; name; username; email; password; email_verified_at; created_at; updated_at",id,"email; username","Admin accounts"
+personal_access_tokens,Personal Access Tokens,"id; tokenable_type; tokenable_id; name; token; abilities (nullable); last_used_at; expires_at (indexed); created_at; updated_at",id,token,"Polymorphic to admins/users"
+settings,Settings,"id; terms_conditions; contact_help; company_profile; created_at; updated_at",id,,"Managed by admin"
+categories,Categories,"id; name; slug; created_at; updated_at",id,slug,"Catalog grouping"
+products,Products,"id; name; description; category (string); stock; price; images (json); variants (json); weight; length; width; height; discount_price; discount_percent; discount_active; discount_start; discount_end; created_at; updated_at",id,,"Conceptual: category_id FK"
+order_statuses,Order Statuses,"id; name; description; created_at; updated_at",id,,"Status dictionary"
+users,Users,"id; name; email; password; email_verified_at; remember_token; created_at; updated_at",id,email,"Order owner"
+orders,Orders,"id; user_id (FK); status_id (FK); total; order_date; buyer_name; buyer_phone; buyer_address; tracking_number; created_at; updated_at",id,,"Core order"
+order_items,Order Items,"id; order_id (FK); product_id (nullable); product_name; product_image (nullable); price; quantity; created_at; updated_at",id,,"Cascade on order_id"
+cancellations,Cancellations,"id; order_id (FK); reason (nullable); cancellation_date; initiator; decision (nullable); created_at; updated_at",id,,"Approval by admin"
+return_orders,Return Orders,"id; order_id (FK); reason (nullable); return_date; photo_path (nullable); video_path (nullable); decision (nullable); created_at; updated_at",id,,"Approval by admin"
+transactions,Transactions,"id; order_id (string unique); amount; status; snap_token (nullable); created_at; updated_at",id,order_id,"Midtrans link"

@@ -1,0 +1,376 @@
+/* Styling untuk tabel produk */
+.product-table {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.product-table table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.product-table th {
+  background-color: #e52b2b;
+  color: white;
+  text-align: left;
+  padding: 15px;
+  vertical-align: middle;
+}
+
+.product-table td {
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.product-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-cell span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 15px;
+  border-radius: 4px;
+}
+
+/* Placeholder ketika tidak ada gambar */
+.product-image.placeholder {
+  background-color: #f0f0f0;
+  display: inline-block;
+}
+
+/* ====== Form Update/Tambah Katalog ====== */
+.dashboard-content {
+  padding: 20px;
+}
+
+.product-form {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.form-section {
+  margin-bottom: 24px;
+}
+
+.form-section h3,
+.form-section h2 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.product-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.image-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  user-select: none;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-image {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.add-image {
+  width: 150px;
+  height: 150px;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+}
+
+.image-container:active {
+  cursor: grabbing;
+}
+
+.add-image label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.image-hint {
+  color: #666;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.product-form input[type="text"],
+.product-form input[type="number"],
+.product-form select,
+.product-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* Perbesar kolom teks deskripsi pada form update/tambah katalog */
+.form-textarea {
+  min-height: 200px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* ====== Helpers untuk select dengan panah ====== */
+.select-container { position: relative; }
+.select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #999;
+}
+
+/* ====== Varian layout yang rapi ====== */
+.variant-row { 
+  display: grid;
+  grid-template-columns: 1fr auto; /* form grid + remove button */
+  gap: 12px;
+  align-items: start; /* sejajarkan konten baris di bagian atas */
+  margin-bottom: 12px; 
+}
+.variant-inputs {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr; /* atribut lebih lebar, lalu stok & harga */
+  gap: 12px;
+  align-items: start; /* pastikan label sejajar di bagian atas */
+}
+.variant-inputs .form-input {
+  height: 42px; /* samakan tinggi input agar garis atas sejajar */
+  line-height: 24px;
+  display: block;
+  margin-top: 0; /* hilangkan kemungkinan margin bawaan */
+}
+.variant-headers {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #666;
+  align-items: end; /* header dirapatkan ke bawah agar dekat dengan input */
+}
+.variant-inputs.two-cols { grid-template-columns: 1fr 1fr; }
+.variant-inputs label { display: block; margin-bottom: 6px; font-size: 14px; color: #333; }
+
+.add-variant {
+  background: transparent;
+  border: 1px dashed #ccc;
+  border-radius: 6px;
+  padding: 10px 15px;
+  width: 100%;
+  color: #666;
+  cursor: pointer;
+}
+.remove-variant {
+  background: transparent;
+  border: none;
+  color: #e52b2b;
+  font-size: 20px;
+  cursor: pointer;
+  align-self: end;
+  justify-self: end;
+}
+
+/* ====== Header & Main Wrapper: samakan dengan AddKatalogProduk ====== */
+.page-main {
+  background-color: #f8f8f8;
+  padding: 20px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  font-size: 28px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.page-header p {
+  margin: 5px 0 0;
+  color: #666;
+}
+
+.website-btn {
+  background-color: #e52b2b;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.action-cell {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.edit-button, .delete-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.edit-button {
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.delete-button {
+  background-color: #ffeeee;
+  color: #e52b2b;
+}
+
+/* Styling untuk modal konfirmasi hapus */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cancel-button, .confirm-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cancel-button {
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.confirm-button {
+  background-color: #e52b2b;
+  color: white;
+}
+
+/* Styling untuk tombol tambah */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-button {
+  background-color: #e52b2b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Alignment nomor, stok & aksi khusus tabel katalog */
+.number-cell { text-align: center; }
+.product-table thead th:nth-child(4) { /* Stok setelah kolom No & Produk & Harga */
+  text-align: center;
+}
+.product-table tbody td:nth-child(4) {
+  text-align: center;
+}
+.product-table thead th:nth-child(5) { /* Aksi di kolom terakhir */
+  text-align: center;
+}
+.product-table tbody td:nth-child(5) {
+  text-align: center;
+  vertical-align: middle;
+}

@@ -1,0 +1,50 @@
+body {
+    background: #f4fcfd;
+    font-family: Arial, sans-serif;
+}
+.form-container {
+    background: #d3d3d3;
+    border-radius: 30px;
+    width: 400px;
+    margin: 100px auto;
+    padding: 40px 30px;
+    box-shadow: 0 0 20px #eee;
+}
+/* Batasi styling label hanya di dalam .form-container (login/register) */
+.form-container label {
+    color: #c33;
+    font-size: 18px;
+    margin-top: 10px;
+    display: block;
+}
+/* Batasi styling input hanya di dalam .form-container agar tidak mengganggu halaman lain */
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0 20px 0;
+    border-radius: 15px;
+    border: none;
+    background: #fff7f7;
+    font-size: 16px;
+}
+/* Batasi tombol bawaan admin hanya di halaman login/register */
+.form-container .btn {
+    background: #c33;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 40px;
+    font-size: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.register-link, .login-link {
+    margin-top: 20px;
+    text-align: right;
+}
+.error {
+    color: #c33;
+    margin-top: 10px;
+}

@@ -1,0 +1,10 @@
+CC0 1.0 Universal (CC0 1.0) Public Domain Dedication — Database
+
+Lisensi ini berlaku untuk skema database (migrasi), dokumentasi terkait, dan SEED/SAMPLE DATA yang disediakan dalam repositori ini.
+
+Catatan:
+- Data berisi informasi pribadi (PII) atau materi pihak ketiga tidak termasuk dedikasi ini kecuali dinyatakan eksplisit.
+- Gunakan hanya data sintetis/contoh yang disediakan; jika menambahkan data produksi, jangan commit ke publik.
+- Anda bebas menyalin, memodifikasi, mendistribusikan, dan menggunakan database (skema dan sample data) untuk tujuan apa pun, termasuk komersial, tanpa perlu izin.
+
+Untuk teks legal lengkap, lihat file `LICENSE` di root repositori (CC0 1.0 Universal Legal Code).
