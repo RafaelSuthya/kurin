@@ -97,3 +97,9 @@ E2E Cypress berada di `frontend/cypress/e2e/`. Jalankan dari folder `frontend/`:
 
 - Hindari menambahkan folder duplikat di root. Semua kode frontend harus berada di `frontend/`, sedangkan backend di root.
 - Bila perlu folder baru untuk dokumentasi/skrip, taruh di root dan dokumentasikan di `README.md` ini.
+
+## MySQL root
+- mysql -u root -p
+CREATE USER 'ecommerce_user'@'localhost' IDENTIFIED BY 'StrongPassword123!';
+GRANT ALL PRIVILEGES ON ecommerceapp.* TO 'ecommerce_user'@'localhost';
+FLUSH PRIVILEGES;
