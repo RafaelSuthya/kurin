@@ -17,7 +17,7 @@
 ## Operasional (Backend, Frontend, Database)
 - Backend (Laravel):
   - `composer install`
-  - Salin `.env.example` ke `.env`, set DB & `APP_KEY` (`php artisan key:generate`)
+  - set DB & `APP_KEY` (`php artisan key:generate`)
   - Migrasi: `php artisan migrate --force`
   - Dev server: `php artisan serve`
 - Frontend (React):
