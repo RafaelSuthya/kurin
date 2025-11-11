@@ -14,6 +14,8 @@ return [
         'http://127.0.0.1:3002',
         'http://localhost:3013',
         'http://127.0.0.1:3013',
+        // ✅ Production frontend
+        'https://frontend-production-ebf2.up.railway.app',
     ],
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
